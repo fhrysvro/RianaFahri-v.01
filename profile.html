@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+	<meta property="og:title" content="FaRi">
+<meta property="og:description" content="Website My Favorit gw! isinya Tentang Riana Dan Fahri🥰😍">
+<meta property="og:image" content="https://i.ibb.co.com/9HbLdjkk/IMG-1030.jpg">
+<meta property="twitter:image" content="https://i.ibb.co.com/9HbLdjkk/IMG-1030.jpg">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan Akun - FaRi</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --ocean-deep: #1e293b;
+      --ocean-light: #e11d48;
+      --valentine-red: #be123c;
+      --valentine-red-hover: #9f1239;
+      --valentine-bg: #fff1f2;
+      --dark-text: #0f172a;
+      --white: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.95);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a 0%, #4c0519 50%, #881337 100%);
+      color: var(--dark-text); display: flex; flex-direction: column; position: relative; overflow-x: hidden;
+    }
+
+    .hearts-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+
+    .floating-heart-bg {
+      position: absolute; bottom: -40px; fill: rgba(244, 63, 94, 0.25);
+      animation: floatUp 8s infinite linear; filter: blur(0.5px);
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.7; } 80% { opacity: 0.7; }
+      100% { transform: translateY(-110vh) scale(1.2) rotate(360deg); opacity: 0; }
+    }
+
+    .navbar {
+      background: var(--card-bg); backdrop-filter: blur(14px); display: flex;
+      justify-content: space-between; align-items: center; padding: clamp(10px, 2vw, 14px) clamp(12px, 3.5vw, 32px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); position: sticky; top: 0; z-index: 100; gap: 10px;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: clamp(8px, 1.8vw, 14px); min-width: 0; flex: 1; }
+
+    .nav-brand {
+      font-size: clamp(1.2rem, 3.5vw, 1.45rem); font-weight: 800;
+      background: linear-gradient(135deg, #fb7185, #e11d48);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; flex-shrink: 0;
+    }
+
+    .nav-greeting-box {
+      display: flex; align-items: center; gap: 6px; background: var(--valentine-bg);
+      padding: 6px clamp(10px, 2vw, 16px); border-radius: 30px; border: 1px solid rgba(225, 29, 72, 0.25);
+      max-width: 100%; overflow: hidden;
+    }
+
+    .nav-greeting-text {
+      font-weight: 700; font-size: clamp(0.75rem, 2.2vw, 0.85rem); color: var(--valentine-red);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .brand-heart { width: 16px; height: 16px; fill: var(--valentine-red); flex-shrink: 0; }
+    .nav-right { position: relative; flex-shrink: 0; }
+
+    .profile-trigger-btn {
+      background: var(--white); border: 2px solid var(--valentine-red); padding: 3px 8px 3px 3px;
+      border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 5px;
+    }
+
+    .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .dropdown-arrow { width: 16px; height: 16px; stroke: var(--valentine-red); transition: transform 0.3s ease; }
+    .dropdown-arrow.active { transform: rotate(180deg); }
+
+    .dropdown-menu {
+      position: absolute; right: 0; top: calc(100% + 10px); width: 190px;
+      background: var(--white); border-radius: 18px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 8px; display: none; flex-direction: column; gap: 4px;
+      border: 1px solid rgba(225, 29, 72, 0.2); animation: fadeIn 0.2s ease-in-out; z-index: 101;
+    }
+
+    .dropdown-menu.show { display: flex; }
+
+    .dropdown-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+      font-size: 0.85rem; font-weight: 600; color: var(--dark-text); text-decoration: none; border-radius: 12px; border: none; background: transparent; cursor: pointer; width: 100%; text-align: left;
+    }
+
+    .dropdown-item svg { width: 18px; height: 18px; stroke: var(--valentine-red); }
+    .dropdown-item:hover { background: var(--valentine-bg); color: var(--valentine-red-hover); }
+    .dropdown-item:hover svg { stroke: var(--valentine-red-hover); }
+    .dropdown-divider { height: 1px; background: #ffe4e6; margin: 2px 0; }
+
+    .main-container {
+      max-width: 580px; margin: clamp(20px, 4vw, 40px) auto; padding: 0 clamp(16px, 3vw, 24px); width: 100%; flex: 1; position: relative; z-index: 1;
+    }
+
+    .account-card {
+      background: var(--card-bg); backdrop-filter: blur(12px); border-radius: 24px;
+      padding: clamp(24px, 5vw, 36px) clamp(18px, 4vw, 30px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid var(--valentine-bg); padding-bottom: 12px; margin-bottom: 24px;
+    }
+
+    .card-title { font-size: clamp(1.1rem, 3vw, 1.3rem); font-weight: 800; color: #881337; }
+    .avatar-preview-wrapper { text-align: center; margin-bottom: 24px; }
+
+    .preview-avatar {
+      width: clamp(90px, 18vw, 110px); height: clamp(90px, 18vw, 110px);
+      border-radius: 50%; object-fit: cover; border: 4px solid var(--white); box-shadow: 0 8px 20px rgba(225, 29, 72, 0.25);
+    }
+
+    .section-divider-title {
+      font-size: 0.9rem; font-weight: 800; color: var(--valentine-red);
+      margin: 20px 0 10px 0; border-bottom: 1px dashed rgba(225, 29, 72, 0.3); padding-bottom: 4px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--dark-text); margin-bottom: 6px; }
+    .input-wrapper { position: relative; display: flex; align-items: center; }
+    .input-wrapper svg { position: absolute; left: 14px; width: 18px; height: 18px; stroke: var(--valentine-red); }
+
+    .input-wrapper input, .input-wrapper textarea {
+      width: 100%; padding: 12px 14px 12px 42px; border: 1.5px solid #fecdd3;
+      border-radius: 12px; outline: none; font-size: 0.9rem; color: var(--dark-text); background: var(--white);
+    }
+
+    .input-wrapper textarea {
+      resize: vertical; min-height: 70px; padding-top: 10px;
+    }
+
+    .input-wrapper input:focus, .input-wrapper textarea:focus { border-color: var(--valentine-red); }
+    .file-input { padding: 10px 14px !important; }
+
+    .btn-submit {
+      width: 100%; padding: 13px; border: none; border-radius: 12px;
+      background: linear-gradient(135deg, #e11d48, #9f1239);
+      color: var(--white); font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 15px;
+      box-shadow: 0 6px 18px rgba(225, 29, 72, 0.3); transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(225, 29, 72, 0.4);
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-background" id="heartsBg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="home.html" class="nav-brand">FaRi</a>
+      <div class="nav-greeting-box">
+        <span class="nav-greeting-text" id="navGreetingText">Pengaturan Akun</span>
+        <svg class="brand-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="profile-trigger-btn" id="menuBtn" onclick="toggleMenu(event)">
+        <img src="https://ui-avatars.com/api/?name=User&background=e11d48&color=fff" alt="Avatar" id="navAvatar" class="user-avatar">
+        <svg class="dropdown-arrow" id="dropdownArrow" fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+      </button>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="home.html" class="dropdown-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+          Beranda
+        </a>
+        <a href="gallery.html" class="dropdown-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+          Galeri Kenangan
+        </a>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" onclick="handleLogout()">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" /></svg>
+          Keluar
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FORM PROFILE -->
+  <div class="main-container">
+    <div class="account-card">
+      <div class="card-header">
+        <div class="card-title">Pengaturan Akun</div>
+      </div>
+
+      <form onsubmit="handleSaveProfile(event)">
+        <div class="avatar-preview-wrapper">
+          <img src="https://ui-avatars.com/api/?name=User&background=e11d48&color=fff" alt="Avatar" id="avatarPreview" class="preview-avatar">
+        </div>
+
+        <div class="section-divider-title">Informasi Profil</div>
+
+        <div class="form-group">
+          <label for="displayUserId">ID Unik Akun (Permanen)</label>
+          <div class="input-wrapper">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg>
+            <input type="text" id="displayUserId" readonly style="background: #fff1f2; cursor: not-allowed;">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editName">Nama / Username Baru</label>
+          <div class="input-wrapper">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+            <input type="text" id="editName" required placeholder="Masukkan nama baru">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editBio">Bio Profil / Catatan Kamu</label>
+          <div class="input-wrapper">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+            <textarea id="editBio" placeholder="Tulis bio unik kamu di sini..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editPhotoUrl">URL Foto Profil</label>
+          <div class="input-wrapper">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
+            <input type="url" id="editPhotoUrl" placeholder="https://domain.com/foto.jpg" oninput="updateUrlPreview()">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="uploadFile">Atau Pilih Foto Kamu</label>
+          <div class="input-wrapper">
+            <input type="file" id="uploadFile" class="file-input" accept="image/*" onchange="handleFileSelect(event)">
+          </div>
+        </div>
+
+        <div class="section-divider-title">Keamanan Sandi</div>
+
+        <div class="form-group">
+          <label for="editPassword">Kata Sandi Baru</label>
+          <div class="input-wrapper">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+            <input type="password" id="editPassword" placeholder="Kosongin we kalo ga di ubah">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnSave">Simpan we atos mah</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+    import { getAuth, onAuthStateChanged, updateProfile, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+    window.toggleMenu = function(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('dropdownMenu');
+      const arrow = document.getElementById('dropdownArrow');
+      menu.classList.toggle('show');
+      arrow.classList.toggle('active');
+    };
+
+    document.addEventListener('click', () => {
+      const menu = document.getElementById('dropdownMenu');
+      const arrow = document.getElementById('dropdownArrow');
+      if (menu && menu.classList.contains('show')) {
+        menu.classList.remove('show');
+        arrow.classList.remove('active');
+      }
+    });
+
+    function createHeartParticles() {
+      const container = document.getElementById('heartsBg');
+      if (!container) return;
+      container.innerHTML = '';
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        heart.setAttribute("viewBox", "0 0 24 24");
+        heart.classList.add("floating-heart-bg");
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+        heart.appendChild(path);
+
+        const size = Math.random() * 20 + 12;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.animationDuration = `${Math.random() * 6 + 6}s`;
+        heart.style.animationDelay = `${Math.random() * 5}s`;
+
+        container.appendChild(heart);
+      }
+    }
+    createHeartParticles();
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDd_sG8YqAvns1J2OmzZL0z15WwP25djw8",
+      authDomain: "webpaungerr.firebaseapp.com",
+      databaseURL: "https://webpaungerr-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "webpaungerr",
+      storageBucket: "webpaungerr.firebasestorage.app",
+      messagingSenderId: "492356002906",
+      appId: "1:492356002906:web:5333fc041da5b241f8a463",
+      measurementId: "G-BX3RZF7DMJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    let currentUserId = '';
+    let currentUserData = null;
+    let base64Image = null;
+
+    onAuthStateChanged(auth, async (user) => {
+      const localUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+      if (user) {
+        currentUserId = user.uid;
+        currentUserData = {
+          name: user.displayName || user.email.split('@')[0],
+          photo: user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'U')}&background=e11d48&color=fff`,
+          bio: "Semoga langeng riana dan fahri!"
+        };
+      } else if (localUser && localUser.userId) {
+        currentUserId = localUser.userId;
+        currentUserData = {
+          name: localUser.username,
+          photo: localUser.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(localUser.username)}&background=e11d48&color=fff`,
+          bio: localUser.bio || "Semoga langeng riana dan fahri!"
+        };
+      } else {
+        window.location.href = "index.html";
+        return;
+      }
+
+      try {
+        const userRef = ref(db, 'users/' + currentUserId);
+        const snapshot = await get(userRef);
+        if (snapshot.exists()) {
+          const dbVal = snapshot.val();
+          if (dbVal.username) currentUserData.name = dbVal.username;
+          if (dbVal.photoURL) currentUserData.photo = dbVal.photoURL;
+          if (dbVal.bio) currentUserData.bio = dbVal.bio;
+        }
+      } catch(e) { console.error(e); }
+
+      document.getElementById('displayUserId').value = currentUserId;
+      document.getElementById('navGreetingText').textContent = `Pengaturan Akun`;
+      document.getElementById('navAvatar').src = currentUserData.photo;
+      document.getElementById('avatarPreview').src = currentUserData.photo;
+      document.getElementById('editName').value = currentUserData.name;
+      document.getElementById('editBio').value = currentUserData.bio || "Semoga langeng riana dan fahri!";
+      document.getElementById('editPhotoUrl').value = currentUserData.photo.startsWith('data:') ? '' : currentUserData.photo;
+    });
+
+    window.updateUrlPreview = function() {
+      const url = document.getElementById('editPhotoUrl').value.trim();
+      if (url) {
+        document.getElementById('avatarPreview').src = url;
+        base64Image = null;
+      }
+    };
+
+    window.handleFileSelect = function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          base64Image = e.target.result;
+          document.getElementById('avatarPreview').src = base64Image;
+          document.getElementById('editPhotoUrl').value = '';
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+    window.handleSaveProfile = async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSave');
+      const newName = document.getElementById('editName').value.trim();
+      const newBio = document.getElementById('editBio').value.trim() || "Semoga langeng riana dan fahri!";
+      const newPass = document.getElementById('editPassword').value.trim();
+      const inputUrl = document.getElementById('editPhotoUrl').value.trim();
+      
+      let finalPhoto = base64Image || inputUrl || currentUserData.photo;
+
+      if (!newName) return alert('Nama tidak boleh kosong!');
+
+      btn.disabled = true;
+      btn.textContent = 'Menyimpan...';
+
+      try {
+        const updatePayload = {
+          username: newName,
+          bio: newBio,
+          photoURL: finalPhoto,
+          updatedAt: new Date().toISOString()
+        };
+
+        if (newPass) updatePayload.password = newPass;
+
+        await update(ref(db, 'users/' + currentUserId), updatePayload);
+
+        if (auth.currentUser) {
+          await updateProfile(auth.currentUser, {
+            displayName: newName,
+            photoURL: finalPhoto
+          });
+        }
+
+        localStorage.setItem('loggedInUser', JSON.stringify({
+          userId: currentUserId,
+          username: newName,
+          bio: newBio,
+          photoURL: finalPhoto
+        }));
+
+        alert('Pengaturan profil berhasil diperbarui!');
+        window.location.href = "home.html";
+
+      } catch (err) {
+        console.error(err);
+        alert('Gagal menyimpan perubahan.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Simpan Perubahan';
+      }
+    };
+
+    window.handleLogout = async function() {
+      try { await signOut(auth); } catch (err) { console.error(err); }
+      localStorage.removeItem('loggedInUser');
+      window.location.href = "index.html";
+    };
+  </script>
+</body>
+</html>
