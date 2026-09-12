@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+	<meta property="og:title" content="FaRi">
+<meta property="og:description" content="Website My Favorit gw! isinya Tentang Riana Dan Fahri🥰😍">
+<meta property="og:image" content="https://i.ibb.co.com/spRtRbTy/IMG-9514.jpg">
+<meta property="twitter:image" content="https://i.ibb.co.com/spRtRbTy/IMG-9514.jpg">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Kenangan - FaRi</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --ocean-deep: #1e293b;
+      --ocean-light: #e11d48;
+      --valentine-red: #be123c;
+      --valentine-red-hover: #9f1239;
+      --valentine-bg: #fff1f2;
+      --dark-text: #0f172a;
+      --white: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.95);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a 0%, #4c0519 50%, #881337 100%);
+      color: var(--dark-text); display: flex; flex-direction: column; position: relative; overflow-x: hidden;
+    }
+
+    .hearts-background {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+
+    .floating-heart-bg {
+      position: absolute; bottom: -40px; fill: rgba(244, 63, 94, 0.25);
+      animation: floatUp 8s infinite linear; filter: blur(0.5px);
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.7; } 80% { opacity: 0.7; }
+      100% { transform: translateY(-110vh) scale(1.2) rotate(360deg); opacity: 0; }
+    }
+
+    .navbar {
+      background: var(--card-bg); backdrop-filter: blur(14px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: clamp(10px, 2vw, 14px) clamp(12px, 3.5vw, 32px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); position: sticky; top: 0; z-index: 100; gap: 10px;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: clamp(8px, 1.8vw, 14px); min-width: 0; flex: 1; }
+
+    .nav-brand {
+      font-size: clamp(1.2rem, 3.5vw, 1.45rem); font-weight: 800;
+      background: linear-gradient(135deg, #fb7185, #e11d48);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; flex-shrink: 0;
+    }
+
+    .nav-greeting-box {
+      display: flex; align-items: center; gap: 6px; background: var(--valentine-bg);
+      padding: 6px clamp(10px, 2vw, 16px); border-radius: 30px; border: 1px solid rgba(225, 29, 72, 0.25);
+      max-width: 100%; overflow: hidden;
+    }
+
+    .nav-greeting-text {
+      font-weight: 700; font-size: clamp(0.75rem, 2.2vw, 0.85rem); color: var(--valentine-red);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .brand-heart { width: 16px; height: 16px; fill: var(--valentine-red); flex-shrink: 0; }
+    .nav-right { position: relative; flex-shrink: 0; }
+
+    .profile-trigger-btn {
+      background: var(--white); border: 2px solid var(--valentine-red); padding: 3px 8px 3px 3px;
+      border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 5px;
+    }
+
+    .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .dropdown-arrow { width: 16px; height: 16px; stroke: var(--valentine-red); transition: transform 0.3s ease; }
+    .dropdown-arrow.active { transform: rotate(180deg); }
+
+    .dropdown-menu {
+      position: absolute; right: 0; top: calc(100% + 10px); width: 190px;
+      background: var(--white); border-radius: 18px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 8px; display: none; flex-direction: column; gap: 4px;
+      border: 1px solid rgba(225, 29, 72, 0.2); animation: fadeIn 0.2s ease-in-out; z-index: 101;
+    }
+
+    .dropdown-menu.show { display: flex; }
+
+    .dropdown-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+      font-size: 0.85rem; font-weight: 600; color: var(--dark-text); text-decoration: none; border-radius: 12px; border: none; background: transparent; cursor: pointer; width: 100%; text-align: left;
+    }
+
+    .dropdown-item svg { width: 18px; height: 18px; stroke: var(--valentine-red); }
+    .dropdown-item:hover { background: var(--valentine-bg); color: var(--valentine-red-hover); }
+    .dropdown-item:hover svg { stroke: var(--valentine-red-hover); }
+    .dropdown-divider { height: 1px; background: #ffe4e6; margin: 2px 0; }
+
+    .main-container {
+      max-width: 1280px; margin: clamp(12px, 3vw, 28px) auto;
+      padding: 0 clamp(8px, 2.5vw, 20px); width: 100%; flex: 1; position: relative; z-index: 1;
+    }
+
+    .content-card {
+      background: var(--card-bg); backdrop-filter: blur(14px); border-radius: 20px;
+      padding: clamp(14px, 3vw, 24px) clamp(12px, 2.5vw, 20px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .gallery-header {
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid var(--valentine-bg); padding-bottom: 10px; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;
+    }
+
+    .gallery-title { font-size: clamp(1rem, 2.8vw, 1.25rem); font-weight: 800; color: #881337; display: flex; align-items: center; gap: 8px; }
+
+    .btn-add-photo {
+      background: linear-gradient(135deg, #e11d48, #9f1239);
+      color: var(--white); border: none; padding: 8px 16px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 700; cursor: pointer;
+      display: none; align-items: center; gap: 6px; transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+    }
+
+    .btn-add-photo:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(225, 29, 72, 0.4); }
+
+    .gallery-masonry {
+      column-count: 2;
+      column-gap: 12px;
+      width: 100%;
+    }
+
+    .gallery-card {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      background: var(--white); border-radius: 14px; border: 1px solid rgba(225, 29, 72, 0.18);
+      overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.03); display: flex; flex-direction: column; transition: transform 0.2s ease;
+      height: auto;
+    }
+
+    .gallery-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(225, 29, 72, 0.18); }
+    
+    .gallery-media-container {
+      width: 100%; position: relative; overflow: hidden; background: #fff1f2; cursor: pointer; display: block;
+    }
+
+    .media-type-badge {
+      position: absolute; top: 8px; right: 8px;
+      background: rgba(190, 18, 60, 0.85); backdrop-filter: blur(4px);
+      color: #fff; padding: 4px 8px; border-radius: 20px;
+      font-size: 0.65rem; font-weight: 700; display: flex; align-items: center; gap: 4px;
+      z-index: 3; pointer-events: none;
+    }
+
+    .play-overlay-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 44px; height: 44px; background: rgba(225, 29, 72, 0.9); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2); pointer-events: none; transition: transform 0.2s; z-index: 2;
+      border: 2px solid #ffffff;
+    }
+
+    .gallery-card:hover .play-overlay-btn { transform: translate(-50%, -50%) scale(1.1); }
+
+    .gallery-media-container.aspect-1-1 { aspect-ratio: 1 / 1; }
+    .gallery-media-container.aspect-16-9 { aspect-ratio: 16 / 9; }
+    .gallery-media-container.aspect-9-16 { aspect-ratio: 9 / 16; }
+    .gallery-media-container.aspect-4-3 { aspect-ratio: 4 / 3; }
+    .gallery-media-container.aspect-3-4 { aspect-ratio: 3 / 4; }
+
+    .gallery-media { width: 100%; height: 100%; object-fit: cover; display: block; background: #fff1f2; }
+    
+    .gallery-body { padding: 8px 10px 10px; display: flex; flex-direction: column; background: var(--white); }
+    
+    .gallery-caption {
+      font-size: clamp(0.72rem, 1.8vw, 0.82rem); color: var(--dark-text);
+      font-weight: 500; line-height: 1.35; margin-bottom: 4px; word-break: break-word;
+    }
+
+    .gallery-actions {
+      display: flex; justify-content: flex-end; gap: 6px;
+      border-top: 1px solid #ffe4e6; padding-top: 6px; margin-top: 4px;
+    }
+
+    .btn-action-icon {
+      background: var(--valentine-bg); border: none; padding: 5px;
+      border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+
+    .btn-action-icon svg { width: 13px; height: 13px; stroke: var(--valentine-red); }
+    .btn-action-icon.download svg { stroke: #0284c7; }
+    .btn-action-icon.delete svg { stroke: #e11d48; }
+
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(6px);
+      display: none; justify-content: center; align-items: center; z-index: 200; padding: 12px;
+    }
+
+    .modal-overlay.show { display: flex; }
+
+    .modal-card {
+      background: var(--white); width: 100%; max-width: 420px;
+      border-radius: 20px; padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 0.25s ease; max-height: 88vh; overflow-y: auto;
+    }
+
+    .modal-title { font-size: 1.05rem; font-weight: 800; color: #881337; margin-bottom: 14px; }
+    .form-group-modal { margin-bottom: 12px; }
+    .form-group-modal label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 5px; color: var(--dark-text); }
+
+    .form-group-modal input, .form-group-modal select, .form-group-modal textarea {
+      width: 100%; padding: 9px 12px; border: 1.5px solid #fecdd3; border-radius: 10px; outline: none; font-size: 0.85rem;
+    }
+
+    .form-group-modal textarea { resize: vertical; min-height: 60px; }
+    
+    .aspect-suggestion {
+      font-size: 0.72rem; color: #881337; background: var(--valentine-bg);
+      padding: 6px 10px; border-radius: 8px; margin-top: 6px; display: none;
+      align-items: center; justify-content: space-between; border: 1px solid rgba(225, 29, 72, 0.2);
+    }
+
+    .btn-use-aspect {
+      background: var(--valentine-red); color: white; border: none; padding: 3px 8px;
+      border-radius: 6px; font-size: 0.68rem; font-weight: 700; cursor: pointer;
+    }
+
+    .modal-buttons { display: flex; gap: 10px; margin-top: 16px; }
+    .btn-modal { flex: 1; padding: 10px; border-radius: 10px; border: none; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-modal.cancel { background: #ffe4e6; color: var(--valentine-red); }
+    .btn-modal.save { background: linear-gradient(135deg, #e11d48, #9f1239); color: var(--white); }
+    .btn-modal:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .lightbox-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(12px);
+      display: none; justify-content: center; align-items: center; flex-direction: column;
+      z-index: 300; padding: 16px; animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .lightbox-overlay.show { display: flex; }
+
+    .lightbox-top-actions {
+      position: absolute; top: 16px; right: 16px; display: flex; gap: 10px; z-index: 301;
+    }
+
+    .lightbox-btn {
+      background: rgba(255, 255, 255, 0.2); border: none; color: white;
+      width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+
+    .lightbox-btn:hover { background: var(--valentine-red); }
+
+    .lightbox-content {
+      max-width: 92vw; max-height: 78vh; border-radius: 12px;
+      object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-caption {
+      color: rgba(255,255,255,0.9); font-size: 0.88rem; margin-top: 14px; text-align: center;
+      max-width: 600px; line-height: 1.4; word-break: break-word; font-weight: 400;
+    }
+
+    .spinner {
+      width: 16px; height: 16px; border: 2px solid #ffffff;
+      border-top: 2px solid transparent; border-radius: 50%; animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    
+    @media (min-width: 640px) {
+      .gallery-masonry { column-count: 3; column-gap: 14px; }
+    }
+
+    @media (min-width: 900px) {
+      .gallery-masonry { column-count: 4; column-gap: 16px; }
+    }
+
+    @media (min-width: 1200px) {
+      .gallery-masonry { column-count: 5; column-gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-background" id="heartsBg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="home.html" class="nav-brand">FaRi</a>
+      <div class="nav-greeting-box">
+        <span class="nav-greeting-text" id="navGreetingText">Galeri FaRi</span>
+        <svg class="brand-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="profile-trigger-btn" id="menuBtn" onclick="toggleMenu(event)">
+        <img src="https://ui-avatars.com/api/?name=User&background=e11d48&color=fff" alt="Avatar" id="navAvatar" class="user-avatar">
+        <svg class="dropdown-arrow" id="dropdownArrow" fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+      </button>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="home.html" class="dropdown-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+          Beranda
+        </a>
+        <a href="profile.html" class="dropdown-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+          Pengaturan Akun
+        </a>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" onclick="handleLogout()">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" /></svg>
+          Keluar
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN GALLERY -->
+  <div class="main-container">
+    <div class="content-card">
+      <div class="gallery-header">
+        <div class="gallery-title">
+          <svg class="brand-heart" style="width:20px; height:20px;" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>Galeri FaRi</span>
+        </div>
+        <button class="btn-add-photo" id="btnAddPhoto" onclick="openGalleryModal()">
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          Tambah Media
+        </button>
+      </div>
+
+      <div class="gallery-masonry" id="galleryGrid">
+        <p style="text-align: center; color: #718096; font-size: 0.85rem; padding: 20px 0;">Memuat galeri...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL FORM MEDIA -->
+  <div class="modal-overlay" id="galleryModal">
+    <div class="modal-card">
+      <div class="modal-title">
+        <span id="modalHeaderTitle">Tambah Media Galeri</span>
+      </div>
+      <form id="galleryForm" onsubmit="handleGallerySubmit(event)">
+        <input type="hidden" id="editPhotoId">
+
+        <div class="form-group-modal">
+          <label for="mediaType">Jenis Media</label>
+          <select id="mediaType" onchange="handleMediaTypeChange()">
+            <option value="image">Foto / Gambar</option>
+            <option value="video">Video</option>
+          </select>
+        </div>
+        
+        <div class="form-group-modal">
+          <label for="photoFile" id="lblFile">Unggah File (Lokal)</label>
+          <input type="file" id="photoFile" accept="image/*" onchange="handleModalFileSelect(event)">
+        </div>
+
+        <div class="form-group-modal">
+          <label for="photoUrl" id="lblUrl">atau Masukkan URL Media</label>
+          <input type="url" id="photoUrl" placeholder="https://domain.com/foto.jpg" oninput="handleModalUrlInput(event)">
+        </div>
+
+        <div class="form-group-modal">
+          <label for="photoAspect">Ukuran / Rasio Tampilan</label>
+          <select id="photoAspect">
+            <option value="1-1">1:1 (Persegi)</option>
+            <option value="16-9">16:9 (Lanskap / Wide)</option>
+            <option value="9-16">9:16 (Potret / Story / TikTok)</option>
+            <option value="4-3">4:3 (Standar Foto)</option>
+            <option value="3-4">3:4 (Potret Standar)</option>
+          </select>
+          <div class="aspect-suggestion" id="aspectSuggestionBox">
+            <span id="aspectSuggestionText">Rasio asli: 16:9</span>
+            <button type="button" class="btn-use-aspect" onclick="applySuggestedAspect()">Pakai Ukuran Asli</button>
+          </div>
+        </div>
+
+        <div class="form-group-modal">
+          <label for="photoCaption">Keterangan / Caption</label>
+          <textarea id="photoCaption" placeholder="Tuliskan momen berharga..." required></textarea>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn-modal cancel" id="btnGalleryCancel" onclick="closeGalleryModal()">Batal</button>
+          <button type="submit" class="btn-modal save" id="btnGallerySave">
+            <span id="btnSaveText">Simpan Media</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX FULLSCREEN OVERLAY -->
+  <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+    <div class="lightbox-top-actions">
+      <button class="lightbox-btn" id="btnLightboxDownload" style="display:none;" onclick="event.stopPropagation(); downloadCurrentMedia();" title="Unduh File">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+      </button>
+      <button class="lightbox-btn" onclick="closeLightbox()" title="Tutup">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div id="lightboxMediaContainer" onclick="event.stopPropagation()"></div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, ref, get, set, push, remove, update, onValue } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+    const ADMIN_IDS = ["2026101", "2026102"];
+
+    let modalBase64Media = null;
+    let isAdminUser = false;
+    let suggestedAspectValue = "1-1";
+    let activeLightboxUrl = "";
+    let activeLightboxType = "image";
+
+    window.toggleMenu = function(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('dropdownMenu');
+      const arrow = document.getElementById('dropdownArrow');
+      menu.classList.toggle('show');
+      arrow.classList.toggle('active');
+    };
+
+    document.addEventListener('click', () => {
+      const menu = document.getElementById('dropdownMenu');
+      const arrow = document.getElementById('dropdownArrow');
+      if (menu && menu.classList.contains('show')) {
+        menu.classList.remove('show');
+        arrow.classList.remove('active');
+      }
+    });
+
+    function createHeartParticles() {
+      const container = document.getElementById('heartsBg');
+      if (!container) return;
+      container.innerHTML = '';
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        heart.setAttribute("viewBox", "0 0 24 24");
+        heart.classList.add("floating-heart-bg");
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+        heart.appendChild(path);
+
+        const size = Math.random() * 20 + 12;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.animationDuration = `${Math.random() * 6 + 6}s`;
+        heart.style.animationDelay = `${Math.random() * 5}s`;
+
+        container.appendChild(heart);
+      }
+    }
+    createHeartParticles();
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDd_sG8YqAvns1J2OmzZL0z15WwP25djw8",
+      authDomain: "webpaungerr.firebaseapp.com",
+      databaseURL: "https://webpaungerr-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "webpaungerr",
+      storageBucket: "webpaungerr.firebasestorage.app",
+      messagingSenderId: "492356002906",
+      appId: "1:492356002906:web:5333fc041da5b241f8a463",
+      measurementId: "G-BX3RZF7DMJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    window.downloadMedia = function(url, filename = 'galeri-fari') {
+      if (!isAdminUser) return alert("Akses ditolak! Fitur download hanya untuk Admin.");
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
+    window.downloadCurrentMedia = function() {
+      if (!activeLightboxUrl) return;
+      const ext = activeLightboxType === 'video' ? 'mp4' : 'jpg';
+      downloadMedia(activeLightboxUrl, `fari-media-${Date.now()}.${ext}`);
+    };
+
+    window.openLightbox = function(url, type, caption) {
+      const overlay = document.getElementById('lightboxOverlay');
+      const container = document.getElementById('lightboxMediaContainer');
+      const captionText = document.getElementById('lightboxCaption');
+
+      activeLightboxUrl = url;
+      activeLightboxType = type;
+
+      const dlBtn = document.getElementById('btnLightboxDownload');
+      dlBtn.style.display = isAdminUser ? 'flex' : 'none';
+
+      container.innerHTML = '';
+      if (type === 'video') {
+        const video = document.createElement('video');
+        video.src = url;
+        video.controls = true;
+        video.autoplay = true;
+        video.className = 'lightbox-content';
+        container.appendChild(video);
+      } else {
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = 'lightbox-content';
+        container.appendChild(img);
+      }
+
+      captionText.textContent = caption || '';
+      overlay.classList.add('show');
+    };
+
+    window.closeLightbox = function() {
+      const overlay = document.getElementById('lightboxOverlay');
+      const container = document.getElementById('lightboxMediaContainer');
+      container.innerHTML = '';
+      overlay.classList.remove('show');
+    };
+
+    function detectAspectRatio(w, h) {
+      const ratio = w / h;
+      if (ratio >= 1.5) return { key: "16-9", label: "16:9 (Lanskap)" };
+      if (ratio <= 0.65) return { key: "9-16", label: "9:16 (Potret)" };
+      if (ratio > 1.1 && ratio < 1.5) return { key: "4-3", label: "4:3 (Standar Lanskap)" };
+      if (ratio < 0.9 && ratio > 0.65) return { key: "3-4", label: "3:4 (Standar Potret)" };
+      return { key: "1-1", label: "1:1 (Persegi)" };
+    }
+
+    function showAspectSuggestion(w, h) {
+      const suggested = detectAspectRatio(w, h);
+      suggestedAspectValue = suggested.key;
+
+      const box = document.getElementById('aspectSuggestionBox');
+      const text = document.getElementById('aspectSuggestionText');
+      text.textContent = `Saran ukuran asli: ${suggested.label}`;
+      box.style.display = 'flex';
+    }
+
+    window.applySuggestedAspect = function() {
+      document.getElementById('photoAspect').value = suggestedAspectValue;
+    };
+
+    window.handleMediaTypeChange = function() {
+      const type = document.getElementById('mediaType').value;
+      const fileInput = document.getElementById('photoFile');
+      const urlInput = document.getElementById('photoUrl');
+
+      if (type === 'video') {
+        fileInput.accept = 'video/*';
+        urlInput.placeholder = 'https://domain.com/video.mp4';
+      } else {
+        fileInput.accept = 'image/*';
+        urlInput.placeholder = 'https://domain.com/foto.jpg';
+      }
+    };
+
+    window.openGalleryModal = function(id = '', currentUrl = '', currentCaption = '', currentAspect = '1-1', currentType = 'image') {
+      if (!isAdminUser) return alert("Akses ditolak!");
+
+      document.getElementById('editPhotoId').value = id;
+      document.getElementById('mediaType').value = currentType || 'image';
+      document.getElementById('photoUrl').value = currentUrl.startsWith('data:') ? '' : currentUrl;
+      document.getElementById('photoCaption').value = currentCaption;
+      document.getElementById('photoAspect').value = currentAspect || '1-1';
+      document.getElementById('photoFile').value = '';
+      document.getElementById('aspectSuggestionBox').style.display = 'none';
+      modalBase64Media = null;
+
+      handleMediaTypeChange();
+      document.getElementById('modalHeaderTitle').textContent = id ? "Edit Media Galeri" : "Tambah Media Galeri";
+      document.getElementById('galleryModal').classList.add('show');
+    };
+
+    window.closeGalleryModal = function() {
+      document.getElementById('galleryModal').classList.remove('show');
+    };
+
+    function compressImage(file, maxWidth = 1000) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+          const img = new Image();
+          img.src = e.target.result;
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let w = img.width;
+            let h = img.height;
+
+            if (w > maxWidth) {
+              h = Math.round((h * maxWidth) / w);
+              w = maxWidth;
+            }
+
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', 0.82));
+          };
+        };
+      });
+    }
+
+    window.handleModalFileSelect = async function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const type = document.getElementById('mediaType').value;
+
+        if (type === 'image') {
+          modalBase64Media = await compressImage(file);
+          const img = new Image();
+          img.onload = function() {
+            showAspectSuggestion(img.width, img.height);
+          };
+          img.src = modalBase64Media;
+        } else {
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            modalBase64Media = evt.target.result;
+            const video = document.createElement('video');
+            video.onloadedmetadata = function() {
+              showAspectSuggestion(video.videoWidth, video.videoHeight);
+            };
+            video.src = modalBase64Media;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+    };
+
+    window.handleModalUrlInput = function(e) {
+      const url = e.target.value.trim();
+      const type = document.getElementById('mediaType').value;
+
+      if (url) {
+        if (type === 'video') {
+          const video = document.createElement('video');
+          video.onloadedmetadata = function() {
+            showAspectSuggestion(video.videoWidth, video.videoHeight);
+          };
+          video.src = url;
+        } else {
+          const img = new Image();
+          img.onload = function() {
+            showAspectSuggestion(img.width, img.height);
+          };
+          img.src = url;
+        }
+      }
+    };
+
+    window.handleGallerySubmit = async function(e) {
+      e.preventDefault();
+      if (!isAdminUser) return alert("Akses ditolak!");
+
+      const photoId = document.getElementById('editPhotoId').value;
+      const mediaType = document.getElementById('mediaType').value;
+      const urlInput = document.getElementById('photoUrl').value.trim();
+      const captionInput = document.getElementById('photoCaption').value.trim();
+      const aspectInput = document.getElementById('photoAspect').value;
+      
+      const saveBtn = document.getElementById('btnGallerySave');
+      const cancelBtn = document.getElementById('btnGalleryCancel');
+      const saveText = document.getElementById('btnSaveText');
+
+      let finalMediaUrl = modalBase64Media || urlInput;
+
+      if (!finalMediaUrl && !photoId) return alert("Harap unggah file atau masukkan URL!");
+
+      saveBtn.disabled = true;
+      cancelBtn.disabled = true;
+      saveText.innerHTML = `<div class="spinner"></div> <span>Memposting ${mediaType === 'video' ? 'Video' : 'Foto'}... Mohon Tunggu</span>`;
+
+      try {
+        if (photoId) {
+          const updateData = { 
+            caption: captionInput,
+            aspectRatio: aspectInput,
+            type: mediaType
+          };
+          if (finalMediaUrl) updateData.imageUrl = finalMediaUrl;
+          await update(ref(db, 'gallery/' + photoId), updateData);
+          alert("Media berhasil diperbarui!");
+        } else {
+          const newRef = push(ref(db, 'gallery'));
+          await set(newRef, {
+            imageUrl: finalMediaUrl,
+            caption: captionInput,
+            aspectRatio: aspectInput,
+            type: mediaType,
+            createdAt: new Date().toISOString()
+          });
+          alert("Media baru berhasil ditambahkan!");
+        }
+        closeGalleryModal();
+      } catch (err) {
+        console.error(err);
+        alert("Gagal memposting! File mungkin terlalu besar untuk diproses.");
+      } finally {
+        saveBtn.disabled = false;
+        cancelBtn.disabled = false;
+        saveText.textContent = 'Simpan Media';
+      }
+    };
+
+    window.deleteGalleryPhoto = async function(id) {
+      if (!isAdminUser) return alert("Akses ditolak!");
+      if (confirm("Apakah kamu yakin ingin menghapus media ini?")) {
+        try {
+          await remove(ref(db, 'gallery/' + id));
+          alert("Media berhasil dihapus!");
+        } catch (err) {
+          console.error(err);
+          alert("Gagal menghapus media.");
+        }
+      }
+    };
+
+    onAuthStateChanged(auth, async (user) => {
+      const localUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      let currentUserId = '';
+      let photo = '';
+
+      if (user) {
+        currentUserId = user.uid;
+        photo = user.photoURL;
+      } else if (localUser && localUser.userId) {
+        currentUserId = localUser.userId;
+        photo = localUser.photoURL;
+      } else {
+        window.location.href = "index.html";
+        return;
+      }
+
+      isAdminUser = ADMIN_IDS.includes(currentUserId.toString());
+
+      document.getElementById('navGreetingText').textContent = `Galeri Kenangan`;
+      document.getElementById('navAvatar').src = photo || `https://ui-avatars.com/api/?name=User&background=e11d48&color=fff`;
+
+      if (isAdminUser) {
+        document.getElementById('btnAddPhoto').style.display = 'inline-flex';
+      }
+
+      const galleryRef = ref(db, 'gallery');
+      onValue(galleryRef, (snapshot) => {
+        const grid = document.getElementById('galleryGrid');
+        grid.innerHTML = '';
+
+        if (snapshot.exists()) {
+          const galleryData = snapshot.val();
+          Object.keys(galleryData).forEach((key) => {
+            const item = galleryData[key];
+            const aspectClass = item.aspectRatio ? `aspect-${item.aspectRatio}` : 'aspect-1-1';
+            const mediaType = item.type || 'image';
+            const escapedCaption = (item.caption || '').replace(/'/g, "\\'");
+            
+            const card = document.createElement('div');
+            card.className = 'gallery-card';
+
+            const adminActionsHtml = isAdminUser ? `
+              <div class="gallery-actions">
+                <button class="btn-action-icon download" onclick="downloadMedia('${item.imageUrl}', 'fari-media-${key}.${mediaType === 'video' ? 'mp4' : 'jpg'}')" title="Unduh">
+                  <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                </button>
+                <button class="btn-action-icon" onclick="openGalleryModal('${key}', '${item.imageUrl}', '${escapedCaption}', '${item.aspectRatio || '1-1'}', '${mediaType}')" title="Edit">
+                  <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                </button>
+                <button class="btn-action-icon delete" onclick="deleteGalleryPhoto('${key}')" title="Hapus">
+                  <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
+                </button>
+              </div>
+            ` : '';
+
+            let mediaElementHtml = '';
+            if (mediaType === 'video') {
+              mediaElementHtml = `
+                <div class="gallery-media-container ${aspectClass}" onclick="openLightbox('${item.imageUrl}', 'video', '${escapedCaption}')">
+                  <div class="media-type-badge">
+                    <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                    <span>VIDEO</span>
+                  </div>
+                  <div class="play-overlay-btn">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <video src="${item.imageUrl}" poster="${item.imageUrl}" class="gallery-media" preload="metadata" muted playsinline></video>
+                </div>
+              `;
+            } else {
+              mediaElementHtml = `
+                <div class="gallery-media-container ${aspectClass}" onclick="openLightbox('${item.imageUrl}', 'image', '${escapedCaption}')">
+                  <div class="media-type-badge">
+                    <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                    <span>FOTO</span>
+                  </div>
+                  <img src="${item.imageUrl}" alt="Galeri" class="gallery-media" loading="lazy">
+                </div>
+              `;
+            }
+
+            card.innerHTML = `
+              ${mediaElementHtml}
+              <div class="gallery-body">
+                <p class="gallery-caption">${item.caption || ''}</p>
+                ${adminActionsHtml}
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        } else {
+          grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #718096; font-size: 0.85rem; padding: 20px 0;">Belum ada media kenangan.</p>`;
+        }
+      });
+    });
+
+    window.handleLogout = async function() {
+      try { await signOut(auth); } catch (err) { console.error(err); }
+      localStorage.removeItem('loggedInUser');
+      window.location.href = "index.html";
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta property="og:title" content="FaRi">
+  <meta property="og:description" content="Website My Favorit gw! isinya Tentang Riana Dan Fahri🥰😍">
+  <meta property="og:image" content="https://i.ibb.co.com/spRtRbTy/IMG-9514.jpg">
+  <meta property="twitter:image" content="https://i.ibb.co.com/spRtRbTy/IMG-9514.jpg">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Masuk & Daftar - FaRi</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --ocean-deep: #1e293b;
+      --ocean-light: #e11d48;
+      --valentine-red: #be123c;
+      --valentine-red-hover: #9f1239;
+      --valentine-bg: #fff1f2;
+      --dark-text: #0f172a;
+      --white: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.94);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a 0%, #4c0519 50%, #881337 100%);
+      color: var(--dark-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .hearts-background {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0; overflow: hidden;
+    }
+
+    .floating-heart-bg {
+      position: absolute; bottom: -40px; fill: rgba(244, 63, 94, 0.25);
+      animation: floatUp 8s infinite linear; filter: blur(0.5px);
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.7; } 80% { opacity: 0.7; }
+      100% { transform: translateY(-110vh) scale(1.2) rotate(360deg); opacity: 0; }
+    }
+
+    .auth-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: clamp(24px, 5vw, 36px) clamp(20px, 4vw, 30px);
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .brand-title {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      background: linear-gradient(135deg, #fb7185, #e11d48);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.82rem;
+      text-align: center;
+      color: var(--valentine-red);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .tab-switch {
+      display: flex;
+      background: var(--valentine-bg);
+      border-radius: 14px;
+      padding: 4px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #9f1239;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--white);
+      color: var(--valentine-red);
+      box-shadow: 0 4px 12px rgba(190, 18, 60, 0.15);
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark-text);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #fecdd3;
+      border-radius: 12px;
+      outline: none;
+      font-size: 0.88rem;
+      background: #fff;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus { border-color: var(--valentine-red); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e11d48, #9f1239);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 6px 18px rgba(225, 29, 72, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(225, 29, 72, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-background" id="heartsBg"></div>
+
+  <div class="auth-card">
+    <div class="brand-title">FaRi</div>
+    <p class="brand-subtitle">Selamat Datang di FaRi</p>
+
+    <div class="tab-switch">
+      <button class="tab-btn active" id="tabLoginBtn" onclick="switchTab('login')">Masuk</button>
+      <button class="tab-btn" id="tabRegisterBtn" onclick="switchTab('register')">Daftar</button>
+    </div>
+
+    <!-- FORM LOGIN -->
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="loginId">Masukin Username Kamu</label>
+        <input type="text" id="loginId" required placeholder="Contoh: Riana Cantik">
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Kata Sandi</label>
+        <input type="password" id="loginPass" required placeholder="Masukkan kata sandi">
+      </div>
+      <button type="submit" class="btn-submit" id="btnLogin">Masukkkkkk</button>
+    </form>
+
+    <!-- FORM REGISTER -->
+    <form id="registerForm" style="display: none;" onsubmit="handleRegister(event)">
+      <div class="form-group">
+        <label for="regUsername">Username / Nama Kamu</label>
+        <input type="text" id="regUsername" required placeholder="Masukin nama kamu">
+      </div>
+      <div class="form-group">
+        <label for="regPass">Kata Sandi</label>
+        <input type="password" id="regPass" required placeholder="Buat kata sandi baru">
+      </div>
+      <button type="submit" class="btn-submit" id="btnRegister">Daftar Akun Baru</button>
+    </form>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+
+    function createHeartParticles() {
+      const container = document.getElementById('heartsBg');
+      if (!container) return;
+      container.innerHTML = '';
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        heart.setAttribute("viewBox", "0 0 24 24");
+        heart.classList.add("floating-heart-bg");
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+        heart.appendChild(path);
+
+        const size = Math.random() * 20 + 12;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.animationDuration = `${Math.random() * 6 + 6}s`;
+        heart.style.animationDelay = `${Math.random() * 5}s`;
+
+        container.appendChild(heart);
+      }
+    }
+    createHeartParticles();
+
+    window.switchTab = function(type) {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const tabLoginBtn = document.getElementById('tabLoginBtn');
+      const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+
+      if (type === 'login') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+        tabLoginBtn.classList.add('active');
+        tabRegisterBtn.classList.remove('active');
+      } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        tabLoginBtn.classList.remove('active');
+        tabRegisterBtn.classList.add('active');
+      }
+    };
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDd_sG8YqAvns1J2OmzZL0z15WwP25djw8",
+      authDomain: "webpaungerr.firebaseapp.com",
+      databaseURL: "https://webpaungerr-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "webpaungerr",
+      storageBucket: "webpaungerr.firebasestorage.app",
+      messagingSenderId: "492356002906",
+      appId: "1:492356002906:web:5333fc041da5b241f8a463",
+      measurementId: "G-BX3RZF7DMJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    function generateVisitorId() {
+      let res;
+      do {
+        res = Math.floor(1000000 + Math.random() * 9000000).toString();
+      } while (res === "2026101" || res === "2026102");
+      return res;
+    }
+
+    window.handleRegister = async function(e) {
+      e.preventDefault();
+      const username = document.getElementById('regUsername').value.trim();
+      const pass = document.getElementById('regPass').value.trim();
+      const btn = document.getElementById('btnRegister');
+
+      btn.disabled = true;
+      btn.textContent = 'Mendaftarkan...';
+
+      try {
+        const userId = generateVisitorId();
+        const photo = `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=e11d48&color=fff`;
+
+        await set(ref(db, 'users/' + userId), {
+          userId: userId,
+          username: username,
+          password: pass,
+          photoURL: photo,
+          bio: "Semoga langeng riana dan fahri!",
+          createdAt: new Date().toISOString()
+        });
+
+        localStorage.setItem('loggedInUser', JSON.stringify({
+          userId: userId,
+          username: username,
+          photoURL: photo,
+          bio: "Semoga langeng riana dan fahri!"
+        }));
+
+        alert(`Akun berhasil dibuat!\nID Akun Kamu: ${userId}`);
+        window.location.href = "home.html";
+
+      } catch (err) {
+        console.error(err);
+        alert("Gagal mendaftar.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Daftar Akun Baru';
+      }
+    };
+
+    window.handleLogin = async function(e) {
+      e.preventDefault();
+      const inputId = document.getElementById('loginId').value.trim();
+      const pass = document.getElementById('loginPass').value.trim();
+      const btn = document.getElementById('btnLogin');
+
+      btn.disabled = true;
+      btn.textContent = 'Memverifikasi...';
+
+      try {
+        const usersSnap = await get(ref(db, 'users'));
+        if (usersSnap.exists()) {
+          const users = usersSnap.val();
+          let foundUser = null;
+
+          Object.keys(users).forEach(key => {
+            const u = users[key];
+            if ((key === inputId || u.userId === inputId || u.username === inputId) && u.password === pass) {
+              foundUser = u;
+              foundUser.userId = u.userId || key;
+            }
+          });
+
+          if (foundUser) {
+            localStorage.setItem('loggedInUser', JSON.stringify({
+              userId: foundUser.userId,
+              username: foundUser.username,
+              photoURL: foundUser.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(foundUser.username)}&background=e11d48&color=fff`,
+              bio: foundUser.bio || "Semoga langeng riana dan fahri!"
+            }));
+
+            window.location.href = "home.html";
+            return;
+          }
+        }
+
+        alert("ID / Username atau kata sandi salah!");
+
+      } catch (err) {
+        console.error(err);
+        alert("Gagal masuk.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Masukkkkk';
+      }
+    };
+  </script>
+</body>
+</html>
